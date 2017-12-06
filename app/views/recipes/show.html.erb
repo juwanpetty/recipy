@@ -1,0 +1,13 @@
+<h1>Title</h1>
+<%= @recipe.title %>
+
+<br><br>
+
+<h2>Description</h2>
+<%= @recipe.description %>
+
+<br><br>
+
+<%= link_to "Edit", edit_recipe_path(@recipe) %>
+<%= link_to "Back", root_path %>
+<%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" } %>
