@@ -1,0 +1,85 @@
+.profile {
+    display: flex;
+    margin-bottom: 6rem;
+
+    .avatar {
+        margin-right: 40px;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .avatar__image__link {
+            margin-bottom: 1rem;
+        }
+
+        .image__edit {
+            color: $red;
+        }
+    }
+}
+
+.profile__content {
+    width: 100%;
+}
+
+.profile__header {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.profile__section {
+    padding: 2rem 0;
+
+    &--first {
+        padding-top: 0;
+    }
+}
+
+.section__label {
+    font-size: 14px;
+    color: $gray;
+    margin-bottom: 10px;
+}
+
+.section__information {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section__content {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.profile__edit {
+    color: $red;
+    font-size: 16px;
+}
+
+#delete-account {
+    margin-top: 64px;
+}
+
+.profile-post__options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .divider {
+        margin: 0 8px;
+        height: 20px;
+    }
+}
+
+.post__section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 2rem 0;
+}
+
+.post__section--first {
+    padding-top: 0;
+}

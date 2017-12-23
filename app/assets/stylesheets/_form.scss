@@ -1,0 +1,156 @@
+.form__header {
+    margin-bottom: 40px;
+
+    p {
+        color: $gray;
+        max-width: 300px;
+        line-height: 24px;
+    }
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+input[type="text"], input[type="password"], input[type="email"],
+textarea {
+    border-radius: 4px;
+    border: 1px solid $gray;
+    height: 36px;
+    padding: 6px 12px;
+    color: $gray;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        border: 2px solid $blue;
+        opacity: 0.75;
+    }
+}
+
+.recipe__form {
+    display: grid;
+    grid-gap: 6rem;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.form__picture {
+    grid-column: 1 / 2;
+}
+
+.form__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    grid-column: 2 / 7;
+
+    input {
+        margin-bottom: 2rem;
+        width: 320px;
+    }
+}
+
+
+.form__instructions {
+    grid-column: 1 / 7;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.form__ingredients {
+    margin-bottom: 6rem;
+
+    width: 46%;
+
+    .btn {
+    }
+}
+
+.form__methods {
+    width: 46%;
+
+    margin-bottom: 6rem;
+}
+
+.form__ingredients__header, .form__methods__header {
+    grid-column: 1 / 3;
+
+    h2 {
+        font-weight: 500;
+        font-size: 18px;
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.form__ingredients__header__item, .form__methods__header__item {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+        font-size: 14px;
+        margin: 0;
+        margin-bottom: 1rem;
+        font-weight: 400;
+
+        &:first-child {
+            width: 25%;
+        }
+
+        &:last-child {
+            width: 70%;
+        }
+    }
+}
+
+.form__ingredients__item, .form__methods__item {
+    margin-bottom: 2rem;
+}
+
+.form__ingredients__item {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        &:first-child {
+            width: 25%;
+        }
+
+        &:last-child {
+            width: 70%;
+        }
+    }
+}
+
+.form__methods__item {
+    width: 100%;
+
+    textarea {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+        height: 60px;
+    }
+}
+
+.form__controls {
+    margin-bottom: 6rem;
+
+    display: flex;
+    justify-content: center;
+
+    > *:not(:last-child) {
+        margin-right: 2.652rem;
+    }
+}
