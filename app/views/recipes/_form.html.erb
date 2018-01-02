@@ -1,29 +1,90 @@
-<%= form_with scope: :recipe, url: recipes_path, local: true do |form| %>
-    <% if @recipe.errors.any? %>
-        <div id="errors">
-            <h2>
-                <%= pluralize(@recipe.errors.count, "error") %> prohibited
-                this recipe from being saved:
-            </h2>
-            <ul>
-                <% @article.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-                <% end %>
-            </ul>
+<div class="wrapper" id="new-recipe">
+    <%= form_for @recipe, html: {class: "recipe-form"} do |f| %>
+        <div class="form__header">
+            <h1>Create Recipe</h1>
+            <p>Do you have something delicious to <br> share with the world</p>
+        </div>
+
+        <% if @recipe.errors.any? %>
+            <div id="errors">
+                <h2>
+                    <%= pluralize(@recipe.errors.count, "error") %> prohibited
+                    this recipe from being saved:
+                </h2>
+                <ul>
+                    <% @recipe.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="recipe__form">
+            <div class="form__picture">
+                <%= f.file_field :image %>
+            </div>
+
+            <div class="form__main">
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+
+                <%= f.label :category %>
+                <%= f.select(:category, 
+                        [
+                            ['Breakfast', 'Breakfast'],
+                            ['Lunch', 'Lunch'],
+                            ['Dinner', 'Dinner'],
+                            ['Dessert', 'Dessert'],
+                            ['Snacks', 'Snacks']
+                        ]
+                ) %>
+            </div>
+
+            <div class="form__instructions">
+                <div class="form__ingredients">
+                    <div class="form__ingredients__header">
+                        <h2>Ingredients</h2>
+                    </div>
+
+                    <div class="form__ingredients__header__item">
+                        <h4>Quantity</h4>
+                        <h4>Description</h4>
+                    </div>
+
+                    <%= f.fields_for :ingredients, class: "form__ingredients" do |ingredient| %>
+                        <%= render 'ingredient_fields', f: ingredient  %>
+                    <% end %>
+                    
+                    <div class="links">
+                        <%= link_to_add_association "Add Ingredient", f, :ingredients, class: "btn btn--option btn--full-width" %>
+                    </div>
+                </div>
+
+
+                
+                <div class="form__methods">
+                    <div class="form__methods__header">
+                        <h2>Methods</h2>
+                    </div>
+
+                    <div class="form__methods__header__item">
+                        <h4>Step</h4>
+                    </div>
+
+                    <%= f.fields_for :directions, class: "form__methods" do |direction| %>
+                        <%= render 'direction_fields', f: direction  %>
+                    <% end %>
+
+                    <div class="links">
+                        <%= link_to_add_association "Add Step", f, :directions, class: "btn btn--option btn--full-width" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form__controls">
+            <%= link_to "Cancel", root_path, class: "btn btn--option btn--specific-width" %>
+            <%= f.submit class: "btn btn--important btn--specific-width" %>
         </div>
     <% end %>
-
-    <p>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-    </p>
-    
-    <p>
-        <%= form.label :description %><br>
-        <%= form.text_area :description %>
-    </p>
-    
-    <p>
-        <%= form.submit %>
-    </p>
-<% end %>
+</div>

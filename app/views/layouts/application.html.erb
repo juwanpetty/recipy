@@ -83,7 +83,7 @@
                     <div class="divider divider--hori"></div>
                     <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
                     <a href="" class="dropdown__item">Profile</a> <!-- takes user to profile page -->
-                    <a href="" class="dropdown__item dropdown__item--last">Sign Out</a> <!-- signs user out -->
+                    <%= link_to "Sign Out", root_path, class: "dropdown__item dropdown__item--last" %> <!-- signs user out -->
                 </div>
             </div>       
         </nav>

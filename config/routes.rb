@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :recipes
 
-  root "recipes#index"
+  root 'pages#welcome'
 end

@@ -1,0 +1,104 @@
+<div class="wrapper" id="welcome">
+    <section class="featured">
+        <div class="featured__left">
+            <div class="post post--large">
+                <a href="#" class="post__image__link"><img src="assets/images/post-image.jpg" alt="" class="post__image"></a>
+
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Sheri Palmer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider divider--vert"></div>
+
+        <div class="featured__right">
+            <div class="post post--small">
+                <a href="#" class="post__image__link"><img src="assets/images/post-image.jpg" alt="" class="post__image"></a>
+
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Cel Lisboa</p>
+                </div>
+            </div>
+
+            <div class="divider divider--hori"></div>
+
+            <div class="post post--small">
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Elroy Leanord</p>
+                </div>
+            </div>
+
+            <div class="divider divider--hori"></div>
+
+            <div class="post post--small">
+                <div class="post__content">
+                    <p class="post__tag">DESSERT</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Trevor Miller</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest">
+        <div class="latest__header">
+            <h2>Latest</h2>
+
+            <div>
+                <a href="" class="header__link">See All</a>
+                <%= link_to "New Recipe", new_recipe_path, class: "header__link options__edit" %>
+            </div>
+        </div>
+
+        <div class="latest__content">
+            <% @recipe.each do |recipe| %>
+                <div class="post post--small">
+                    <%= link_to recipe_path(recipe), class: "post__image__link" do %>
+                        <%= image_tag recipe.image.url(:medium), alt: "A picture of " + recipe.title, class: "post__image" %>
+                    <% end %>
+
+                    <div class="post__content">
+                        <p class="post__tag"> <%= recipe.category %> </p>
+
+                        <%= link_to recipe_path(recipe) do %>
+                            <h3 class="post__title"> <%= recipe.title %> </h3>
+                        <% end %>
+
+                        <p class="post__author">By Cel Lisboa</p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </section>
+
+    <div class="divider divider--vert"></div>
+
+    <aside class="info">
+        <div class="info__item">
+            <h3 class="info__header">About</h3>
+            <p class="info__content">
+                My name is <a href="">Juwan Petty</a>, as someone 
+                who has a passion for food and building, I created Recipy. 
+                Recipy is a collection of recipes shared among my family, 
+                the Petty's and is viewable anywhere on the web.
+            </p>
+        </div>
+
+        <div class="info__item">
+            <h3 class="info__header">Reach out to us</h3>
+            <p class="info__content">
+                Feel free to reach out to us about anything. 
+                Want to suggest a recipe? Found an issue? Let 
+                us know.
+            </p>
+            <a href="" class="btn btn--full-width">Chat with us</a>
+        </div>
+    </aside>
+</div>

@@ -1,13 +1,123 @@
-<h1>Title</h1>
-<%= @recipe.title %>
+<div class="wrapper" id="show-recipe">
+    <div class="recipe">
+        <div class="recipe__header">
+            <h1 class="recipe__title"> <%= @recipe.title %> </h1>
+            <div class="recipe__details">
+                <p class="recipe__author">By Jayda Lauren</p>
 
-<br><br>
+                <div class="recipe__rating">
+                    <svg><use xlink:href="#star"></use></svg>
+                    <svg><use xlink:href="#star"></use></svg>
+                    <svg><use xlink:href="#star"></use></svg>
+                    <svg><use xlink:href="#star"></use></svg>
+                    <svg><use xlink:href="#star"></use></svg>
 
-<h2>Description</h2>
-<%= @recipe.description %>
+                    <p class="rating__reviews">(48)</p>
+                </div>
 
-<br><br>
+                <p class="recipe__date"> <%= @recipe.created_at.strftime("%B %d, %Y") %> </p>
+            </div>
+            <div class="recipe__options">
+                <%= link_to "Edit", edit_recipe_path(@recipe), class: "options__edit" %>
+                <div class="divider divider--vert"></div>
+                <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "options__delete" %>
+            </div>
+        </div>
 
-<%= link_to "Edit", edit_recipe_path(@recipe) %>
-<%= link_to "Back", root_path %>
-<%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" } %>
+        <%= image_tag @recipe.image.url(:large), class: "recipe__image" %>
+
+        <div class="recipe__instructions">
+            <div class="recipe__ingredients">
+                <div class="ingredients__header">
+                    <h2>Ingredients</h2>
+    
+                    <div class="ingredients__controls">
+                        <a href="">Print</a>
+                        <div class="divider divider--vert"></div>
+                        <a href="mailto:">Email</a>
+                    </div>
+                </div>
+
+                <% @recipe.ingredients.each do |ingredient| %>
+                    <div class="ingredients__item">
+                        <input type="checkbox" class="ingredient__checkbox">
+
+                        <p class="ingredient__quantity"> <%= ingredient.quantity %> </p>
+                        <p class="ingredient__description"> <%= ingredient.description %> </p>
+                    </div>
+                <% end %>
+            </div>
+    
+            <div class="divider divider--vert"></div>
+    
+            <div class="recipe__methods">
+                <div class="methods__header">
+                    <h2>Methods</h2>
+                </div>
+
+                <% @recipe.directions.each_with_index do |direction, index| %>
+                    <div class="methods__item">
+                        <div class="method__step">
+                            <p class="step__number"> <%= index + 1 %> </p>
+                            <div class="step__background"></div>
+                        </div>
+                        <p class="method__description"> <%= direction.step %> </p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    
+        <div class="recipe__share">
+            <h2>Share this recipe</h2>
+    
+            <div class="share__container">
+                <div class="share__item">
+                        <svg><use xlink:href="#pinterest"></use></svg>
+                    <p class="share__count">5.2k</p>
+                </div>
+                <div class="share__item">
+                        <svg><use xlink:href="#twitter"></use></svg>
+                    <p class="share__count">5.2k</p>
+                </div>
+                <div class="share__item share__item--last">
+                        <svg><use xlink:href="#facebook"></use></svg>
+                    <p class="share__count">5.2k</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related__recipes">
+        <h2 class="related__header">You'll also love</h2>
+
+        <div class="related__items">
+            <div class="post post--small">
+                <a href="#"><img src="assets/images/post-image.jpg" alt="" class="post__image"></a>
+
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Cel Lisboa</p>
+                </div>
+            </div>
+            <div class="post post--small">
+                <a href="#"><img src="assets/images/post-image.jpg" alt="" class="post__image"></a>
+
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Cel Lisboa</p>
+                </div>
+            </div>
+            <div class="post post--small">
+                <a href="#"><img src="assets/images/post-image.jpg" alt="" class="post__image"></a>
+
+                <div class="post__content">
+                    <p class="post__tag">DINNER</p>
+                    <a href="#"><h3 class="post__title">Broccoli Cheddar Mac and Cheese</h3></a>
+                    <p class="post__author">By Cel Lisboa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
