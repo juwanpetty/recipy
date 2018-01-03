@@ -1,2 +1,47 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="wrapper" id="signup">
+    <div class="signup">
+        <div class="signup__content__left">
+            <div class="content">
+                <h1>Join Recipy</h1>
+                <p>
+                    Access a collection of recipes, all <br>
+                    curated by the Petty familiy and friends.
+                </p>
+            </div>
+        </div>
+
+        <div class="signup__content__right">
+            <h1>Sign Up</h1>
+
+            <%= form_for @user, html: { class: "signup__form" } do |f| %>
+                <%= render 'shared/error_messages' %>
+                <div class="form__group">
+                    <label for="">First Name</label>
+                    <input type="text">
+                </div>
+                
+                <div class="form__group">
+                    <%= form.label :name %>
+                    <%= form.text_field :name %>
+                </div>
+                
+                <div class="form__group">
+                    <%= form.label :email %>
+                    <%= form.text_field :email %>
+                </div>
+                
+                <div class="form__group">
+                    <%= form.label :password, "Password (min. of 6 characters)" %>
+                    <%= form.password_field :password %>
+                </div>
+
+                <div class="form__group">
+                    <%= form.label :password_confirmation, "Confirm Password" %>
+                    <%= form.text_field :password_confirmation %>
+                </div>
+
+                <%= f.submit "Sign Up", class: "btn btn--important btn--full-width" %>
+            <% end %>
+        </div>
+    </div>
+</div>

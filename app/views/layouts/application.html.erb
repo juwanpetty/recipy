@@ -54,40 +54,42 @@
       </symbol>
     </svg>
 
-    <div class="wrapper">
-        <nav class="menu">
-            <a href="" class="menu__item">
-                <svg><use xlink:href="#search"></use></svg>
-            </a>
+    <% unless current_page?(controller: 'users', action: 'new')  %>
+        <div class="wrapper">
+            <nav class="menu">
+                <a href="" class="menu__item">
+                    <svg><use xlink:href="#search"></use></svg>
+                </a>
 
-            <input type="text" class="menu__input">
+                <input type="text" class="menu__input">
 
-            <a href="" class="menu__item">All</a>
-            <a href="" class="menu__item">Breakfast</a>
-            <a href="" class="menu__item">Lunch</a>
-            <a href="" class="menu__item">Dinner</a>
-            <a href="" class="menu__item">Dessert</a>
-            <a href="" class="menu__item">Snacks</a>
+                <a href="" class="menu__item">All</a>
+                <a href="" class="menu__item">Breakfast</a>
+                <a href="" class="menu__item">Lunch</a>
+                <a href="" class="menu__item">Dinner</a>
+                <a href="" class="menu__item">Dessert</a>
+                <a href="" class="menu__item">Snacks</a>
 
-            <div class="avatar avatar--small">
-                <img src="assets/images/post-image.jpg" alt="" class="avatar__image">
-            </div> 
-            
-            <div class="dropdown">
-                <span class="dropdown__button">
-                    <svg><use xlink:href="#chevron-down"></use></svg>
-                </span>
+                <div class="avatar avatar--small">
+                    <img src="assets/images/post-image.jpg" alt="" class="avatar__image">
+                </div> 
+                
+                <div class="dropdown">
+                    <span class="dropdown__button">
+                        <svg><use xlink:href="#chevron-down"></use></svg>
+                    </span>
 
-                <div class="dropdown__content">
-                    <a href="" class="dropdown__item dropdown__item--first">Dann Petty</a> <!-- takes user to editor page -->
-                    <div class="divider divider--hori"></div>
-                    <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
-                    <a href="" class="dropdown__item">Profile</a> <!-- takes user to profile page -->
-                    <%= link_to "Sign Out", root_path, class: "dropdown__item dropdown__item--last" %> <!-- signs user out -->
-                </div>
-            </div>       
-        </nav>
-    </div>
+                    <div class="dropdown__content">
+                        <a href="" class="dropdown__item dropdown__item--first">Dann Petty</a> <!-- takes user to editor page -->
+                        <div class="divider divider--hori"></div>
+                        <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
+                        <a href="" class="dropdown__item">Profile</a> <!-- takes user to profile page -->
+                        <%= link_to "Sign Out", root_path, class: "dropdown__item dropdown__item--last" %> <!-- signs user out -->
+                    </div>
+                </div>       
+            </nav>
+        </div>
+    <% end %>
 
     <%= yield %>
     
