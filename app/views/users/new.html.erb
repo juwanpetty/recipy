@@ -21,23 +21,23 @@
                 </div>
                 
                 <div class="form__group">
-                    <%= form.label :name %>
-                    <%= form.text_field :name %>
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
                 </div>
                 
                 <div class="form__group">
-                    <%= form.label :email %>
-                    <%= form.text_field :email %>
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
                 </div>
                 
                 <div class="form__group">
-                    <%= form.label :password, "Password (min. of 6 characters)" %>
-                    <%= form.password_field :password %>
+                    <%= f.label :password, "Password (min. of 6 characters)" %>
+                    <%= f.password_field :password %>
                 </div>
 
                 <div class="form__group">
-                    <%= form.label :password_confirmation, "Confirm Password" %>
-                    <%= form.text_field :password_confirmation %>
+                    <%= f.label :password_confirmation, "Confirm Password" %>
+                    <%= f.text_field :password_confirmation %>
                 </div>
 
                 <%= f.submit "Sign Up", class: "btn btn--important btn--full-width" %>
