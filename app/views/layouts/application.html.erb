@@ -54,7 +54,10 @@
       </symbol>
     </svg>
 
-    <% unless current_page?(controller: 'users', action: 'new')  %>
+    <!-- <%= debug(params) if Rails.env.development? %> -->
+
+    <% unless ((current_page?(controller: 'users', action: 'new')) || (request.path == "/signup")) || 
+              ((current_page?(controller: 'sessions', action: 'new')) || (request.path == "/login")) %>
         <div class="wrapper">
             <nav class="menu">
                 <a href="" class="menu__item">
@@ -70,23 +73,27 @@
                 <a href="" class="menu__item">Dessert</a>
                 <a href="" class="menu__item">Snacks</a>
 
-                <div class="avatar avatar--small">
-                    <img src="assets/images/post-image.jpg" alt="" class="avatar__image">
-                </div> 
-                
-                <div class="dropdown">
-                    <span class="dropdown__button">
-                        <svg><use xlink:href="#chevron-down"></use></svg>
-                    </span>
+                <% if logged_in? %>
+                    <div class="avatar avatar--small">
+                        <img src="assets/images/post-image.jpg" alt="" class="avatar__image">
+                    </div> 
+                    
+                    <div class="dropdown">
+                        <span class="dropdown__button">
+                            <svg><use xlink:href="#chevron-down"></use></svg>
+                        </span>
 
-                    <div class="dropdown__content">
-                        <a href="" class="dropdown__item dropdown__item--first">Dann Petty</a> <!-- takes user to editor page -->
-                        <div class="divider divider--hori"></div>
-                        <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
-                        <a href="" class="dropdown__item">Profile</a> <!-- takes user to profile page -->
-                        <%= link_to "Sign Out", root_path, class: "dropdown__item dropdown__item--last" %> <!-- signs user out -->
-                    </div>
-                </div>       
+                        <div class="dropdown__content">
+                            <a href="" class="dropdown__item dropdown__item--first"> <%= current_user.first_name + " " + current_user.last_name %> </a> <!-- takes user to editor page -->
+                            <div class="divider divider--hori"></div>
+                            <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
+                            <%= link_to "Profile", current_user, class: "dropdown__item" %> <!-- takes user to profile page -->
+                            <%= link_to "Sign Out", logout_path, method: :delete, class: "dropdown__item dropdown__item--last" %> <!-- signs user out -->
+                        </div>
+                    </div>     
+                <% else %>
+                    <%= link_to "Login", login_path, class: "login__user" %>
+                <% end %>  
             </nav>
         </div>
     <% end %>

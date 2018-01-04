@@ -31,16 +31,21 @@
                 </div>
                 
                 <div class="form__group">
-                    <%= f.label :password, "Password (min. of 6 characters)" %>
+                    <div class="label__group">
+                        <%= f.label :password %>
+                        <p>(min. of 6 characters)</p>
+                    </div>
                     <%= f.password_field :password %>
                 </div>
 
                 <div class="form__group">
                     <%= f.label :password_confirmation, "Confirm Password" %>
-                    <%= f.text_field :password_confirmation %>
+                    <%= f.password_field :password_confirmation %>
                 </div>
 
                 <%= f.submit "Sign Up", class: "btn btn--important btn--full-width" %>
+
+                <p class="signup__prompt">Already have an account? <%= link_to "Login", login_path %></p>
             <% end %>
         </div>
     </div>
