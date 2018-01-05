@@ -84,7 +84,7 @@
                         </span>
 
                         <div class="dropdown__content">
-                            <a href="" class="dropdown__item dropdown__item--first"> <%= current_user.first_name + " " + current_user.last_name %> </a> <!-- takes user to editor page -->
+                            <p class="dropdown__item dropdown__item--first"> <%= current_user.first_name + " " + current_user.last_name %> </p> <!-- takes user to editor page -->
                             <div class="divider divider--hori"></div>
                             <%= link_to "New Recipe", new_recipe_path, class: "dropdown__item" %> <!-- create a new recipe -->
                             <%= link_to "Profile", current_user, class: "dropdown__item" %> <!-- takes user to profile page -->
